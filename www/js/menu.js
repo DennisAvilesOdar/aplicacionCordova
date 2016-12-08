@@ -7,7 +7,7 @@ $(document).ready(function(){
 $("#botonpanel").click(function(){
   var misVariablesGet = getVarsUrl();
   var foto = "https://macnode1.herokuapp.com/images/";
-  var fondo = "https://macnode1.herokuapp.com/fondos/";
+  var fondo = "https://macnode1.herokuapp.com/fondos/71386344.jpg";
   //$("#nombrepanel").text(misVariablesGet.dato);
   //alert(misVariablesGet.dato);
   $.post("https://macnode1.herokuapp.com/api/v1/panel", {
@@ -15,8 +15,8 @@ $("#botonpanel").click(function(){
   }).done(function(resultado){
     var datosJSON = resultado;
     for(var item in datosJSON){
-        document.getElementById("fondo-usuario").innerHTML ="<img height='170px' width='auto' src='"+ fondo + datosJSON[item].dni +".jpg'>"
-        document.getElementById("foto-usuario").innerHTML ="<img class='circle' src='"+foto+ datosJSON[item].dni +".jpg'>";
+        document.getElementById("fondo-usuario").innerHTML ="<img height='170px' width='auto' src='"+ fondo +"'>"
+        document.getElementById("foto-usuario").innerHTML ="<img class='circle' src='"+foto+ datosJSON[item].dni +".jpg' onerror='imgError(this)'>";
         $("#nombrepanel").text(datosJSON[item].personal);
         $("#correopanel").text(datosJSON[item].email);
     }
